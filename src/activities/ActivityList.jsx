@@ -1,4 +1,5 @@
 import { useAuth } from "../auth/AuthContext";
+import { Link } from "react-router-dom";
 import useQuery from "../api/useQuery";
 import useMutation from "../api/useMutation";
 
@@ -33,7 +34,9 @@ function ActivityListItem({ activity }) {
 
   return (
     <li>
-      <p>{activity.name}</p>
+      <p>
+        <Link to={`/activities/${activity.id}`}>{activity.name}</Link>
+      </p>
       {token && (
         <button onClick={() => deleteActivity()}>
           {loading ? "Deleting" : error ? error : "Delete"}
